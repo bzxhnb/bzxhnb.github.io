@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Linux 中文man安装</title>
+    <link href="/2023/03/22/cman/"/>
+    <url>/2023/03/22/cman/</url>
+    
+    <content type="html"><![CDATA[<h3 id="个人安装方法"><a href="#个人安装方法" class="headerlink" title="个人安装方法"></a>个人安装方法</h3><h3 id="1-安装-man-中文软件包"><a href="#1-安装-man-中文软件包" class="headerlink" title="1. 安装 man 中文软件包"></a>1. 安装 man 中文软件包</h3><p><code>sudo apt install manpages-zh</code></p><h3 id="2-查询-man-中文手册安装目录"><a href="#2-查询-man-中文手册安装目录" class="headerlink" title="2. 查询 man 中文手册安装目录"></a>2. 查询 man 中文手册安装目录</h3><p><code>dpkg -L manpages-zh | less </code><br>发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_TW （繁体）。</p><h3 id="3-设置中英文-man-别名"><a href="#3-设置中英文-man-别名" class="headerlink" title="3. 设置中英文 man 别名"></a>3. 设置中英文 man 别名</h3><p>编辑 ~&#x2F;.bashrc文件：<br><code>sudo vim ~/.bashrc</code></p><h3 id="在文件末尾添加别名："><a href="#在文件末尾添加别名：" class="headerlink" title="在文件末尾添加别名："></a>在文件末尾添加别名：</h3><p><code>alias cman=&#39;man -M /usr/share/man/zh_CN&#39;  </code>  # 中文手册（繁体同理）<br><code>alias eman=&#39;man -M /usr/share/man&#39;   </code>       # 英文手册</p><h3 id="更新-x2F-bashrc-使之生效："><a href="#更新-x2F-bashrc-使之生效：" class="headerlink" title="更新 ~&#x2F;.bashrc 使之生效："></a>更新 ~&#x2F;.bashrc 使之生效：</h3><p><code>source ~/.bashrc</code></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
