@@ -14,25 +14,26 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="XiaoHei">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="BlackJack-Blog">
   
     <meta name="description" content="个人安装方法1. 安装 man 中文软件包sudo apt install manpages-zh 2. 查询 man 中文手册安装目录dpkg -L manpages-zh | less 发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_TW （">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 中文man安装">
 <meta property="og:url" content="https://bzxhnb.github.io/2023/03/22/cman/index.html">
-<meta property="og:site_name" content="blog">
+<meta property="og:site_name" content="BlackJack-Blog">
 <meta property="og:description" content="个人安装方法1. 安装 man 中文软件包sudo apt install manpages-zh 2. 查询 man 中文手册安装目录dpkg -L manpages-zh | less 发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_TW （">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-22T12:48:46.678Z">
-<meta property="article:modified_time" content="2023-03-22T13:38:16.959Z">
+<meta property="article:modified_time" content="2023-03-23T10:59:31.620Z">
 <meta property="article:author" content="XiaoHei">
+<meta property="article:tag" content="BlackJack-Blog">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux 中文man安装 - blog</title>
+  <title>Linux 中文man安装 - BlackJack-Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -96,7 +97,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>小黑屋</strong>
+      <strong>BlackJack</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -202,7 +203,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          377 字
+          381 字
         
       </span>
     
@@ -256,11 +257,11 @@
             
               <div class="markdown-body">
                 
-                <h3 id="个人安装方法"><a href="#个人安装方法" class="headerlink" title="个人安装方法"></a>个人安装方法</h3><h3 id="1-安装-man-中文软件包"><a href="#1-安装-man-中文软件包" class="headerlink" title="1. 安装 man 中文软件包"></a>1. 安装 man 中文软件包</h3><p><code>sudo apt install manpages-zh</code></p>
+                <h1 id="个人安装方法"><a href="#个人安装方法" class="headerlink" title="个人安装方法"></a>个人安装方法</h1><h3 id="1-安装-man-中文软件包"><a href="#1-安装-man-中文软件包" class="headerlink" title="1. 安装 man 中文软件包"></a>1. 安装 man 中文软件包</h3><p><code>sudo apt install manpages-zh</code></p>
 <h3 id="2-查询-man-中文手册安装目录"><a href="#2-查询-man-中文手册安装目录" class="headerlink" title="2. 查询 man 中文手册安装目录"></a>2. 查询 man 中文手册安装目录</h3><p><code>dpkg -L manpages-zh | less </code><br>发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_TW （繁体）。</p>
 <h3 id="3-设置中英文-man-别名"><a href="#3-设置中英文-man-别名" class="headerlink" title="3. 设置中英文 man 别名"></a>3. 设置中英文 man 别名</h3><p>编辑 ~&#x2F;.bashrc文件：<br><code>sudo vim ~/.bashrc</code></p>
-<h3 id="在文件末尾添加别名："><a href="#在文件末尾添加别名：" class="headerlink" title="在文件末尾添加别名："></a>在文件末尾添加别名：</h3><p><code>alias cman=&#39;man -M /usr/share/man/zh_CN&#39;  </code>  # 中文手册（繁体同理）<br><code>alias eman=&#39;man -M /usr/share/man&#39;   </code>       # 英文手册</p>
-<h3 id="更新-x2F-bashrc-使之生效："><a href="#更新-x2F-bashrc-使之生效：" class="headerlink" title="更新 ~&#x2F;.bashrc 使之生效："></a>更新 ~&#x2F;.bashrc 使之生效：</h3><p><code>source ~/.bashrc</code></p>
+<h3 id="4-在文件末尾添加别名："><a href="#4-在文件末尾添加别名：" class="headerlink" title="4.在文件末尾添加别名："></a>4.在文件末尾添加别名：</h3><p><code>alias cman=&#39;man -M /usr/share/man/zh_CN&#39;  </code>  # 中文手册（繁体同理）<br><code>alias eman=&#39;man -M /usr/share/man&#39;   </code>       # 英文手册</p>
+<h3 id="5-更新-x2F-bashrc-使之生效："><a href="#5-更新-x2F-bashrc-使之生效：" class="headerlink" title="5.更新 ~&#x2F;.bashrc 使之生效："></a>5.更新 ~&#x2F;.bashrc 使之生效：</h3><p><code>source ~/.bashrc</code></p>
 
                 
               </div>
