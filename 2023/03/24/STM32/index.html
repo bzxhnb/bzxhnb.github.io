@@ -16,15 +16,15 @@
   <meta name="author" content="XiaoHei">
   <meta name="keywords" content="BlackJack-Blog">
   
-    <meta name="description" content="🤣man安装方法1. 安装 man 中文软件包sudo apt install manpages-zh 2. 查询 man 中文手册安装目录dpkg -L manpages-zh | less 发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_T">
+    <meta name="description" content="常用的 STM32 HAL库关于串口的库函数及基本使用STM32 HAL 库关于串口的使用在使用之前请开启对应的GPIO和UARTS的时钟123456789101112131415161718192021222324252627282930313233343536373839404142#include &quot;stm32f4xx_hal.h&quot;UART_HandleTypeDef h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux 中文man安装">
-<meta property="og:url" content="https://bzxhnb.github.io/2023/03/22/cman/index.html">
+<meta property="og:title" content="STM32">
+<meta property="og:url" content="https://bzxhnb.github.io/2023/03/24/STM32/index.html">
 <meta property="og:site_name" content="BlackJack-Blog">
-<meta property="og:description" content="🤣man安装方法1. 安装 man 中文软件包sudo apt install manpages-zh 2. 查询 man 中文手册安装目录dpkg -L manpages-zh | less 发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_T">
+<meta property="og:description" content="常用的 STM32 HAL库关于串口的库函数及基本使用STM32 HAL 库关于串口的使用在使用之前请开启对应的GPIO和UARTS的时钟123456789101112131415161718192021222324252627282930313233343536373839404142#include &quot;stm32f4xx_hal.h&quot;UART_HandleTypeDef h">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-22T12:48:46.678Z">
-<meta property="article:modified_time" content="2023-03-24T15:40:46.821Z">
+<meta property="article:published_time" content="2023-03-24T15:54:22.000Z">
+<meta property="article:modified_time" content="2023-03-24T16:15:08.446Z">
 <meta property="article:author" content="XiaoHei">
 <meta property="article:tag" content="BlackJack-Blog">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux 中文man安装 - BlackJack-Blog</title>
+  <title>STM32 - BlackJack-Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -180,7 +180,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux 中文man安装"></span>
+            <span id="subtitle" data-typed-text="STM32"></span>
           
         </div>
 
@@ -191,8 +191,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-22 20:48" pubdate>
-          2023年3月22日 晚上
+        <time datetime="2023-03-24 23:54" pubdate>
+          2023年3月24日 晚上
         </time>
       </span>
     
@@ -203,7 +203,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          384 字
+          2.2k 字
         
       </span>
     
@@ -214,7 +214,7 @@
         
         
         
-          4 分钟
+          19 分钟
         
       </span>
     
@@ -252,17 +252,74 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux 中文man安装</h1>
+            <h1 style="display: none">STM32</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="🤣man安装方法"><a href="#🤣man安装方法" class="headerlink" title="🤣man安装方法"></a>🤣man安装方法</h1><h3 id="1-安装-man-中文软件包"><a href="#1-安装-man-中文软件包" class="headerlink" title="1. 安装 man 中文软件包"></a>1. 安装 man 中文软件包</h3><p><code>sudo apt install manpages-zh</code></p>
-<h3 id="2-查询-man-中文手册安装目录"><a href="#2-查询-man-中文手册安装目录" class="headerlink" title="2. 查询 man 中文手册安装目录"></a>2. 查询 man 中文手册安装目录</h3><p><code>dpkg -L manpages-zh | less </code><br>发现 man 中文手册安装目录为 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_CN（简体）或 &#x2F;usr&#x2F;share&#x2F;man&#x2F;zh_TW （繁体）。</p>
-<h3 id="3-设置中英文-man-别名"><a href="#3-设置中英文-man-别名" class="headerlink" title="3. 设置中英文 man 别名"></a>3. 设置中英文 man 别名</h3><p>编辑 ~&#x2F;.bashrc文件：<br><code>sudo vim ~/.bashrc</code></p>
-<h3 id="4-在文件末尾添加别名："><a href="#4-在文件末尾添加别名：" class="headerlink" title="4.在文件末尾添加别名："></a>4.在文件末尾添加别名：</h3><p><code>alias cman=&#39;man -M /usr/share/man/zh_CN&#39;  </code>  # 中文手册（繁体同理）<br><code>alias eman=&#39;man -M /usr/share/man&#39;   </code>       # 英文手册</p>
-<h3 id="5-更新-x2F-bashrc-使之生效："><a href="#5-更新-x2F-bashrc-使之生效：" class="headerlink" title="5.更新 ~&#x2F;.bashrc 使之生效："></a>5.更新 ~&#x2F;.bashrc 使之生效：</h3><p><code>source ~/.bashrc</code></p>
+                <h1 id="常用的-STM32-HAL库关于串口的库函数及基本使用"><a href="#常用的-STM32-HAL库关于串口的库函数及基本使用" class="headerlink" title="常用的 STM32 HAL库关于串口的库函数及基本使用"></a>常用的 STM32 HAL库关于串口的库函数及基本使用</h1><h2 id="STM32-HAL-库关于串口的使用"><a href="#STM32-HAL-库关于串口的使用" class="headerlink" title="STM32 HAL 库关于串口的使用"></a>STM32 HAL 库关于串口的使用</h2><h3 id="在使用之前请开启对应的GPIO和UARTS的时钟"><a href="#在使用之前请开启对应的GPIO和UARTS的时钟" class="headerlink" title="在使用之前请开启对应的GPIO和UARTS的时钟"></a>在使用之前请开启对应的GPIO和UARTS的时钟</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stm32f4xx_hal.h&quot;</span></span><br><br>UART_HandleTypeDef huart1; <span class="hljs-comment">// 定义 UART 句柄</span><br><br><span class="hljs-comment">// 初始化串口</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">UART_Init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>  huart1.Instance = USART1; <span class="hljs-comment">// 选择 USART1</span><br>  huart1.Init.BaudRate = <span class="hljs-number">9600</span>; <span class="hljs-comment">// 波特率为 9600</span><br>  huart1.Init.WordLength = UART_WORDLENGTH_8B; <span class="hljs-comment">// 数据位 8 位</span><br>  huart1.Init.StopBits = UART_STOPBITS_1; <span class="hljs-comment">// 停止位 1 位</span><br>  huart1.Init.Parity = UART_PARITY_NONE; <span class="hljs-comment">// 无校验</span><br>  huart1.Init.Mode = UART_MODE_TX_RX; <span class="hljs-comment">// 支持发送和接收</span><br>  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE; <span class="hljs-comment">// 不使用硬件流控制</span><br>  huart1.Init.OverSampling = UART_OVERSAMPLING_16; <span class="hljs-comment">// 过采样率为 16</span><br>  HAL_UART_Init(&amp;huart1); <span class="hljs-comment">// 调用 HAL_UART_Init 函数初始化串口</span><br>&#125;<br><br><span class="hljs-comment">// 发送数据</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">UART_Send</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">uint16_t</span> len)</span><br>&#123;<br>  HAL_UART_Transmit(&amp;huart1, data, len, HAL_MAX_DELAY); <span class="hljs-comment">// 调用 HAL_UART_Transmit 函数发送数据，最大延迟等待</span><br>&#125;<br><br><span class="hljs-comment">// 接收数据</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">UART_Receive</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">uint16_t</span> len)</span><br>&#123;<br>  HAL_UART_Receive(&amp;huart1, data, len, HAL_MAX_DELAY); <span class="hljs-comment">// 调用 HAL_UART_Receive 函数接收数据，最大延迟等待</span><br>&#125;<br><br><span class="hljs-comment">// 中断接收数据</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">UART_Receive_IT</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">uint16_t</span> len)</span><br>&#123;<br>  HAL_UART_Receive_IT(&amp;huart1, data, len); <span class="hljs-comment">// 调用 HAL_UART_Receive_IT 函数开启中断接收数据</span><br>&#125;<br><br><span class="hljs-comment">// 串口接收中断处理函数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_UART_RxCpltCallback</span><span class="hljs-params">(UART_HandleTypeDef *huart)</span><br>&#123;<br>  <span class="hljs-comment">// 处理接收完成的数据</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
+<h2 id="STM32-HAL库-常用UARTS的库函数"><a href="#STM32-HAL库-常用UARTS的库函数" class="headerlink" title="STM32 HAL库 常用UARTS的库函数"></a>STM32 HAL库 常用UARTS的库函数</h2><ul>
+<li>初始化串口</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_UART_Init</span><span class="hljs-params">(UART_HandleTypeDef *huart)</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>发送数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size, <span class="hljs-type">uint32_t</span> Timeout)</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>接收数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Receive</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size, <span class="hljs-type">uint32_t</span> Timeout)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>发送接收数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_TransmitReceive</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pTxData, <span class="hljs-type">uint8_t</span> *pRxData, <span class="hljs-type">uint16_t</span> Size, <span class="hljs-type">uint32_t</span> Timeout)</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>中断模式发送数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit_IT</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>中断模式接收数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Receive_IT</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>中断模式发送接收数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_TransmitReceive_IT</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pTxData, <span class="hljs-type">uint8_t</span> *pRxData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>DMA模式发送数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit_DMA</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>DMA模式接收数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Receive_DMA</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>DMA模式发送接收数据</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_TransmitReceive_DMA</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pTxData, ui </span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -279,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux 中文man安装</div>
-      <div>https://bzxhnb.github.io/2023/03/22/cman/</div>
+      <div>STM32</div>
+      <div>https://bzxhnb.github.io/2023/03/24/STM32/</div>
     </div>
     <div class="license-meta">
       
@@ -292,7 +349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月22日</div>
+          <div>2023年3月24日</div>
         </div>
       
       
@@ -324,15 +381,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/24/hexo%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" title="hexo操作命令">
+                      <a href="/2023/03/25/Untitled-1/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo操作命令</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/03/24/hexo%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/" title="hexo操作命令">
+                        <span class="hidden-mobile">hexo操作命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
