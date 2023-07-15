@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="XiaoHei">
+  <meta name="keywords" content="BlackJack-Blog">
+  
+    <meta name="description" content="Linux系统中的每个目录都有其特定的作用，以下是常见的一些目录及其作用：1234567891011121314151.  &#x2F; ：根目录，整个Linux系统的起点，所有目录的根目录。2. &#x2F;bin：二进制可执行文件存放的目录，包括一些基本的命令，如cp、mv、ls等。3. &#x2F;boot：存放启动Linux系统所需的文件，如内核文件和启动引导程序。4. &#x2F;dev：存放设备文件，包括硬盘、光驱、键盘、鼠">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux_Debian">
+<meta property="og:url" content="https://bzxhnb.github.io/2023/03/25/Linux-Debian/index.html">
+<meta property="og:site_name" content="BlackJack-Blog">
+<meta property="og:description" content="Linux系统中的每个目录都有其特定的作用，以下是常见的一些目录及其作用：1234567891011121314151.  &#x2F; ：根目录，整个Linux系统的起点，所有目录的根目录。2. &#x2F;bin：二进制可执行文件存放的目录，包括一些基本的命令，如cp、mv、ls等。3. &#x2F;boot：存放启动Linux系统所需的文件，如内核文件和启动引导程序。4. &#x2F;dev：存放设备文件，包括硬盘、光驱、键盘、鼠">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-25T09:05:37.000Z">
+<meta property="article:modified_time" content="2023-03-25T09:08:06.874Z">
+<meta property="article:author" content="XiaoHei">
+<meta property="article:tag" content="BlackJack-Blog">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux_Debian - BlackJack-Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bzxhnb.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BlackJack</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux_Debian"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-25 17:05" pubdate>
+          2023年3月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux_Debian</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux系统中的每个目录都有其特定的作用，以下是常见的一些目录及其作用："><a href="#Linux系统中的每个目录都有其特定的作用，以下是常见的一些目录及其作用：" class="headerlink" title="Linux系统中的每个目录都有其特定的作用，以下是常见的一些目录及其作用："></a>Linux系统中的每个目录都有其特定的作用，以下是常见的一些目录及其作用：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.  / ：根目录，整个Linux系统的起点，所有目录的根目录。<br>2. /bin：二进制可执行文件存放的目录，包括一些基本的命令，如<span class="hljs-built_in">cp</span>、<span class="hljs-built_in">mv</span>、<span class="hljs-built_in">ls</span>等。<br>3. /boot：存放启动Linux系统所需的文件，如内核文件和启动引导程序。<br>4. /dev：存放设备文件，包括硬盘、光驱、键盘、鼠标等设备的文件。<br>5. /etc：存放系统配置文件，如网络配置文件、用户账号信息文件、服务配置文件等。<br>6. /home：普通用户的主目录，每个用户在这个目录下都有一个以其用户名命名的子目录。<br>7. /lib：系统所需的共享库文件。<br>8. /mnt：系统管理员安装临时文件系统的安装点，如挂载光盘、U盘等。<br>9. /opt：第三方软件包安装目录。<br>10. /proc：虚拟文件系统，系统内核和进程信息的动态文件系统。<br>11. /root：系统管理员的主目录。<br>12. /sbin：系统管理员使用的基本命令，如shutdown、ifconfig等。<br>13. /tmp：存放临时文件的目录，系统重新启动时该目录下的文件将被删除。<br>14. /usr：应用程序和文件存放的目录，包括共享库、头文件、二进制程序等。<br>15. /var：存放经常变化的文件，如日志文件、邮件文件等。<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Debian-的安装方式和-Ubuntu-类似，也是通过包管理器来安装软件包。下面是在-Debian-中使用包管理器安装软件包的具体步骤："><a href="#Debian-的安装方式和-Ubuntu-类似，也是通过包管理器来安装软件包。下面是在-Debian-中使用包管理器安装软件包的具体步骤：" class="headerlink" title="Debian 的安装方式和 Ubuntu 类似，也是通过包管理器来安装软件包。下面是在 Debian 中使用包管理器安装软件包的具体步骤："></a>Debian 的安装方式和 Ubuntu 类似，也是通过包管理器来安装软件包。下面是在 Debian 中使用包管理器安装软件包的具体步骤：</h1><p>打开终端：在 Debian 中，可以通过按下 Ctrl + Alt + T 快捷键打开终端。</p>
+<p>更新软件仓库：在安装软件之前，建议先更新软件仓库，以获取最新的软件信息。在终端中输入以下命令：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">sudo apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">update</span><br></code></pre></td></tr></table></figure>
+<p>搜索软件包：使用 apt-cache 命令可以搜索软件包。例如，要搜索名为 firefox 的浏览器：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">apt-cache search firefox</span><br></code></pre></td></tr></table></figure>
+<p>安装软件包：使用 apt-get 命令可以安装软件包。例如，要安装 Firefox 浏览器：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-built_in">get</span> install firefox<br>在执行此命令时，系统会提示您输入管理员密码。输入密码后，软件包将自动下载、安装和配置。<br></code></pre></td></tr></table></figure>
+
+<p>卸载软件包：如果您想卸载已安装的软件包，可以使用 apt-get 命令。例如，要卸载 Firefox 浏览器：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-built_in">remove</span> firefox<br></code></pre></td></tr></table></figure>
+<p>此命令会将 Firefox 软件包从系统中移除，但不会删除用户数据。</p>
+<p>以上是在 Debian 中使用包管理器安装软件包的基本步骤。需要注意的是，Debian 的软件仓库可能会比较稳定，所以可能无法获取最新版本的软件包。如果您需要安装最新版本的软件包，可以考虑从官网下载源代码编译安装。</p>
+<h2 id="编译安装软件是一种在-Linux-上安装软件的方法，它需要从源代码构建软件，比使用包管理器更复杂，但也可以让您安装最新版本的软件包。以下是在-Linux-上编译安装软件的基本步骤，每个步骤都有注释说明："><a href="#编译安装软件是一种在-Linux-上安装软件的方法，它需要从源代码构建软件，比使用包管理器更复杂，但也可以让您安装最新版本的软件包。以下是在-Linux-上编译安装软件的基本步骤，每个步骤都有注释说明：" class="headerlink" title="编译安装软件是一种在 Linux 上安装软件的方法，它需要从源代码构建软件，比使用包管理器更复杂，但也可以让您安装最新版本的软件包。以下是在 Linux 上编译安装软件的基本步骤，每个步骤都有注释说明："></a>编译安装软件是一种在 Linux 上安装软件的方法，它需要从源代码构建软件，比使用包管理器更复杂，但也可以让您安装最新版本的软件包。以下是在 Linux 上编译安装软件的基本步骤，每个步骤都有注释说明：</h2><ol>
+<li>下载源代码：在 Linux 上编译安装软件需要先下载软件的源代码。您可以从软件的官方网站或开源代码库中获取源代码。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">例如，从官方网站下载源代码：</span><br><br>wget https://example.com/example.tar.gz<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>解压源代码：下载完成后，将源代码解压缩到一个目录中。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">解压文件：</span><br><br>tar -zxvf example.tar.gz<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>安装依赖项：在编译软件之前，需要安装一些依赖项，例如编译器、开发库等。您可以在软件的官方网站或 README 文件中找到所需的依赖项列表。在 Ubuntu 中，可以使用以下命令安装常用的开发工具和库：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装编译工具：</span><br><br>sudo apt-get install build-essential<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>配置软件：进入源代码目录，并运行 configure 脚本来配置软件。该脚本将检查系统环境，并生成用于编译软件的 Makefile。例如，要配置名为 example 的软件：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入目录：</span><br><br>cd example<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">配置软件：</span><br><br>./configure<br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li>编译软件：运行 make 命令编译软件。该命令将在当前目录中生成可执行文件和库文件。例如：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">编译软件：</span><br><br>make<br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>安装软件：运行 make install 命令安装软件。该命令将将软件的可执行文件、库和其他资源复制到系统中。例如：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装软件：</span><br>sudo make install<br></code></pre></td></tr></table></figure>
+<ol start="7">
+<li>验证安装：安装完成后，您可以运行软件并验证其是否正常工作。例如，要运行名为 example 的软件：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">运行软件：</span><br>example<br></code></pre></td></tr></table></figure>
+<h3 id="需要注意的是，由于编译安装需要安装依赖项、配置、编译和安装多个步骤，因此可能会更加复杂和耗时。如果您不熟悉-Linux-系统管理或编程，请谨慎操作。"><a href="#需要注意的是，由于编译安装需要安装依赖项、配置、编译和安装多个步骤，因此可能会更加复杂和耗时。如果您不熟悉-Linux-系统管理或编程，请谨慎操作。" class="headerlink" title="需要注意的是，由于编译安装需要安装依赖项、配置、编译和安装多个步骤，因此可能会更加复杂和耗时。如果您不熟悉 Linux 系统管理或编程，请谨慎操作。"></a>需要注意的是，由于编译安装需要安装依赖项、配置、编译和安装多个步骤，因此可能会更加复杂和耗时。如果您不熟悉 Linux 系统管理或编程，请谨慎操作。</h3><h1 id="在Debian中，防火墙配置文件通常位于-x2F-etc-x2F-iptables-x2F-rules-v4-文件中。这个文件包含防火墙规则，它们会在系统启动时自动加载。"><a href="#在Debian中，防火墙配置文件通常位于-x2F-etc-x2F-iptables-x2F-rules-v4-文件中。这个文件包含防火墙规则，它们会在系统启动时自动加载。" class="headerlink" title="在Debian中，防火墙配置文件通常位于 &#x2F;etc&#x2F;iptables&#x2F;rules.v4 文件中。这个文件包含防火墙规则，它们会在系统启动时自动加载。"></a>在Debian中，防火墙配置文件通常位于 &#x2F;etc&#x2F;iptables&#x2F;rules.v4 文件中。这个文件包含防火墙规则，它们会在系统启动时自动加载。</h1><p>以下是一个简单的防火墙配置文件示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">*filter<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许本地回环流量</span><br>-A INPUT -i lo -j ACCEPT<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许相关和已建立的连接</span><br>-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许SSH连接</span><br>-A INPUT -p tcp --dport ssh -j ACCEPT<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许HTTP和HTTPS连接</span><br>-A INPUT -p tcp --dport 80 -j ACCEPT<br>-A INPUT -p tcp --dport 443 -j ACCEPT<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">拒绝所有其他连接</span><br><br>-A INPUT -j DROP<br><br>COMMIT<br></code></pre></td></tr></table></figure>
+<p>这个文件使用iptables的命令语法。在文件的开头，有一行 *filter，表示开始一个新的过滤器规则集。在文件的结尾，有一行 COMMIT，表示结束这个规则集。</p>
+<p>在这个文件中，每个规则都由一个 -A 开头，然后是一个操作，例如 -p 指定协议，–dport 指定目标端口，-j 指定动作（例如 ACCEPT 或 DROP），然后是一个链的名称（例如 INPUT）。您可以在文件中添加任意数量的规则和链，以满足您的需要。</p>
+<p>请注意，当您编辑防火墙配置文件时，请谨慎操作。如果您在配置文件中添加了错误的规则，可能会导致网络故障，从而使您的系统和网络面临安全风险。在编辑防火墙配置文件之前，请务必进行备份，并在编辑之前确认您的设置是否正确。</p>
+<h1 id="在Debian中，您可以使用iptables防火墙来保护您的计算机和网络。下面是一些常用的iptables命令："><a href="#在Debian中，您可以使用iptables防火墙来保护您的计算机和网络。下面是一些常用的iptables命令：" class="headerlink" title="在Debian中，您可以使用iptables防火墙来保护您的计算机和网络。下面是一些常用的iptables命令："></a>在Debian中，您可以使用iptables防火墙来保护您的计算机和网络。下面是一些常用的iptables命令：</h1><p>显示当前的iptables规则：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -L<br></code></pre></td></tr></table></figure>
+
+<p>允许所有的本地流量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -i lo -j ACCEPT<br></code></pre></td></tr></table></figure>
+
+<p>允许相关和已建立的连接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT<br></code></pre></td></tr></table></figure>
+
+<p>允许SSH连接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT<br></code></pre></td></tr></table></figure>
+
+<p>允许HTTP和HTTPS连接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT<br>```shell<br><br>拒绝所有其他连接：<br>```shell<br>sudo iptables -A INPUT -j DROP<br></code></pre></td></tr></table></figure>
+
+<p>上述命令将防火墙配置为允许本地流量、相关和已建立的连接、SSH连接以及HTTP和HTTPS连接。所有其他连接都将被拒绝。</p>
+<p>请注意，上述命令只能在当前会话中设置规则。要使规则在系统重新启动后仍然有效，您需要将它们保存到iptables配置文件中。可以使用以下命令将当前规则保存到配置文件中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><br>sudo sh -c &quot;iptables-save &gt; /etc/iptables/rules.v4&quot;<br></code></pre></td></tr></table></figure>
+
+<p>这将把当前的iptables规则保存到 &#x2F;etc&#x2F;iptables&#x2F;rules.v4 文件中。请注意，在编辑配置文件之前，请先备份该文件。如果您不小心将错误的设置保存到配置文件中，可能会导致网络故障。</p>
+<h1 id="在Debian中，您可以使用以下命令来管理端口："><a href="#在Debian中，您可以使用以下命令来管理端口：" class="headerlink" title="在Debian中，您可以使用以下命令来管理端口："></a>在Debian中，您可以使用以下命令来管理端口：</h1><ol>
+<li>显示当前正在监听的端口：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo netstat -tlnp<br></code></pre></td></tr></table></figure></li>
+<li>查找哪个进程正在使用端口：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo lsof -i :80<br><br>上述命令将查找正在使用端口80的进程。<br></code></pre></td></tr></table></figure></li>
+<li>打开一个端口：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT<br>上述命令将打开TCP端口8080。<br></code></pre></td></tr></table></figure></li>
+<li>关闭一个端口：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -p tcp --dport 8080 -j DROP<br>上述命令将关闭TCP端口8080。<br></code></pre></td></tr></table></figure></li>
+<li>永久打开一个端口：<br>要永久打开一个端口，您需要将防火墙规则保存到配置文件中。例如，以下命令将永久打开TCP端口8080：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT<br>sudo sh -c &quot;iptables-save &gt; /etc/iptables/rules.v4&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="这将在防火墙配置文件中添加一条规则，以便在系统重新启动后继续使用。"><a href="#这将在防火墙配置文件中添加一条规则，以便在系统重新启动后继续使用。" class="headerlink" title="这将在防火墙配置文件中添加一条规则，以便在系统重新启动后继续使用。"></a>这将在防火墙配置文件中添加一条规则，以便在系统重新启动后继续使用。</h2><h2 id="请注意，在配置端口之前，请先考虑您正在打开的端口是否真的需要打开，并确保您已经采取了其他必要的安全措施来保护您的系统和网络。"><a href="#请注意，在配置端口之前，请先考虑您正在打开的端口是否真的需要打开，并确保您已经采取了其他必要的安全措施来保护您的系统和网络。" class="headerlink" title="请注意，在配置端口之前，请先考虑您正在打开的端口是否真的需要打开，并确保您已经采取了其他必要的安全措施来保护您的系统和网络。"></a>请注意，在配置端口之前，请先考虑您正在打开的端口是否真的需要打开，并确保您已经采取了其他必要的安全措施来保护您的系统和网络。</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux_Debian</div>
+      <div>https://bzxhnb.github.io/2023/03/25/Linux-Debian/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>XiaoHei</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/25/Untitled-1/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
